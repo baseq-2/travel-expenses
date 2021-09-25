@@ -2,6 +2,76 @@
 #define TRAVELEXPENSES_H
 
 /**
+ * setTotalDays - get user input for total days of trip
+ * 
+ * @return  total days of trip
+ */
+double setTotalDays();
+
+/**
+ * setArrivalTime - get user input for arrival time on first day of trip
+ * 
+ * @return  arrival time
+ */
+double setArrivalTime();
+
+/**
+ * setDepatureTime - get user input for departure time on last day of trip
+ * 
+ * @return  departure time
+ */
+double setDepartureTime();
+
+/**
+ * setRoundAirfare - get user input for total round-trip airfare fees
+ * 
+ * @return  total round-trip airfare fees
+ */
+double setRoundAirfare();
+
+/**
+ * setCarRentalFee - get user input for total car rental fees
+ * 
+ * @return  total car rental fees
+ */
+double setCarRentalFee();
+
+/**
+ * setParkingFees - get user input for total parking fees
+ * 
+ * @return  total parking fees
+ */
+double setParkingFees();
+
+/**
+ * setTaxiFees - get user input for total taxi fees
+ * 
+ * @return  total taxi fees
+ */
+double setTaxiFees();
+
+/**
+ * setCarRentalFees - get user input for total car rental fees
+ * 
+ * @return  total car rental fees
+ */
+double setCarRentalFees();
+
+/**
+ * setRegistrationFees - get user input for total of conference or seminar fees
+ * 
+ * @return  total of all conference or seminar fees
+ */
+double setRegistrationFees();
+
+/**
+ * setMealFee - get user input for the meal cost of each meal during the trip
+ * 
+ * @return  pointer to array of meal costs for each meal during the trip 
+ */
+double *setMealFee();
+
+/**
  * drivingExpense - Calculate the cost of miles driven with a private vehicle
  * 
  * @param   miles    the total number of miles driven with a private vehicle 
