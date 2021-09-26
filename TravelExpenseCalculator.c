@@ -10,7 +10,6 @@ int main()
     double carRentalFee;
     double privateCarFee;
     double vechileExpense;
-    double privateCarMilage = .38;
     double parkingFee;
     double taxiFee;
     double registrationFee;
@@ -31,7 +30,6 @@ int main()
     double lunchFee;
     double dinnerFee;
     double allowedMealTotal;
-    int d;
     double parkingSpent;
     double taxiSpent;
     double spentMealTotal;
@@ -63,7 +61,8 @@ int main()
     vechileExpense = drivingExpense (vechileExpense);
     printf("\nTotal expense for driving private vechile: $%.2lf", vechileExpense);
 
-    //registrationFee = setRegistrationFees(registrationFee);
+    registrationFee = setRegistrationFees(registrationFee);
+    printf("")
     //maxExpensesHotel(actualHotelFee, extra );
     //allowedBreaksfastFee = 9*days;
     //allowedLunchFee = 12*days;
