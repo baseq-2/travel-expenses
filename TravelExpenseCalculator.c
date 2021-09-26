@@ -1,40 +1,76 @@
 #include <stdio.h>
+#include "travelexpenses.h"
 
-double setTotalDays(double days)
+int main()
 {
-    printf("How many days were spent on the trip?\n");
-    scanf("%lf", &days);
-    while ( days < 1 )
-    {
-        printf("Please enter a number greater than 1\n");
-        scanf("%lf", &days);
-    }
-    printf("Totals days spent:%.2lf", days);
-    return days;
-}
+    int days = 0;
+    double arrivalTime;
+    double departureTime;
+    double airfareFee;
+    double carRentalFee;
+    double privateCarFee;
+    double vechileExpense;
+    double privateCarMilage = .38;
+    double parkingFee;
+    double taxiFee;
+    double registrationFee;
+    double spentTotal;      //Overall total cost
+    double allowedTotal;    //overall allowed cost
+    double mealTotal;
+    double total;
+    double allowedParking;
+    double allowedTaxiFee;
+    double hotelFee;
+    double nightlyRate;
+    double allowedHotelFee;
+    double hotelFeeTotal;
+    double allowedBreaksfastFee;
+    double allowedLunchFee;
+    double allowedDinnerFee;
+    double breaksfastFee;
+    double lunchFee;
+    double dinnerFee;
+    double allowedMealTotal;
+    int d;
+    double parkingSpent;
+    double taxiSpent;
+    double spentMealTotal;
 
-double setDepartureTime(double departureTime)
-{
-    printf("What is the departure time for the trip?(using 24 hour time 00.00)\n");
-    scanf("%lf", &departureTime);
-    printf("time: %.2lf", departureTime);
-    while (departureTime < 0 || departureTime > 23.59)
-    {
-        printf ("\nERROR: please enter valid number between 00.00 - 23.59\n");
-        scanf("%lf",&departureTime);
-    }
-    return departureTime;
-}
+    days = setTotalDays(days);
+    departureTime = setDepartureTime(departureTime);
+    arrivalTime = setArrivalTime(arrivalTime);
 
-double setArrivalTime(double arrivalTime)
-{
-    printf("\nWhat is the arrival time for the trip?(using 24 hour time 00.00)\n");
-    scanf("%f", &arrivalTime);
-    printf("time: %.2lf", arrivalTime);
-    while (arrivalTime < 0 || arrivalTime > 23.59)
-    {
-        printf("\nERROR: enter a valid number between 00.00-23.59\n");
-        scanf("%lf", &arrivalTime);
-    }
-    return arrivalTime;
+    printf("Totals days spent: %.d\n", days);
+    printf("Departure Time is at: %.2lf", departureTime);
+    printf("\nArrival time is at: %.2lf", arrivalTime);
+
+    airfareFee = setRoundAirfare(airfareFee);
+    printf("Round Trip airfare fee: $%.2lf", airfareFee);
+
+    carRentalFee = setCarRentalFees(carRentalFee);
+    printf("\nCar Rental fees: $%.2lf\n", carRentalFee);
+    parkingFee = setParkingFees(parkingFee);
+    printf("\nParking fee: $%.2lf", parkingFee);
+    int parkingDays = days;
+    allowedParking = maxExpensesParking(parkingDays);
+    printf("\nThe max parking provided by the company is: $%.2lf", allowedParking);
+    taxiFee = setTaxiFees(taxiFee);
+    printf("Taxi Fee: $%.2lf", taxiFee);
+    int taxiDays = days;
+    allowedTaxiFee = maxExpensesTaxi(taxiDays);
+    printf("\nThe max taxi fee's provided by the company is: $%.2lf", allowedTaxiFee);
+
+    vechileExpense = drivingExpense (vechileExpense);
+    printf("\nTotal expense for driving private vechile: $%.2lf", vechileExpense);
+
+    //registrationFee = setRegistrationFees(registrationFee);
+    //maxExpensesHotel(actualHotelFee, extra );
+    //allowedBreaksfastFee = 9*days;
+    //allowedLunchFee = 12*days;
+    //allowedDinnerFee = 16*days;
+    //allowedMealTotal = allowedBreaksfastFee + allowedLunchFee + allowedDinnerFee;
+    //setMealFee(allowedMealTotal, spentMealTotal);
+
+
+    
 }
