@@ -85,8 +85,9 @@ void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalRei
 
 }
 
-double maxExpensesHotel(int days, double fee, double allowedHotelFee, double spentHotelFee, double &totalReimbursement)
+double maxExpensesHotel(int days, double &allowedHotelFee, double &spentHotelFee, double &totalReimbursement)
 {
+    double fee;
     printf("How many nights did you spend on the trip?");
     scanf("%d",night );
     printf("How much did the hotel cost you per night?");
@@ -130,8 +131,8 @@ int main()
     double arrivalTime;
     double departureTime;
 
-    double allowedHotelFee;
-    double actualHotelFee;
+    double &allowedHotelFee;
+    double &actualHotelFee;
 
     double registrationFee;
 
@@ -147,7 +148,7 @@ int main()
 
     days = setTotalDays(days);
     registrationFee = setRegistrationFees(registrationFee);
-    maxExpensesHotel(spentHotelFee, allowedHotelFee, &totalReimbursement);
+    maxExpensesHotel(&spentHotelFee, &allowedHotelFee, &totalReimbursement);
     allowedBreaksfastFee = 9*days;
     allowedLunchFee = 12*days;
     allowedDinnerFee = 16*days;
