@@ -14,13 +14,13 @@ double setRegistrationFees(double registrationFee)
 
 }
 
-void setMealFee(double allowedMealTotal, double spentMealTotal)
+void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalReimbursement)
 {
     int day;
     int days;
-    double breakfast;
-    double lunch;
-    double dinner;
+    double &breakfast;
+    double &lunch;
+    double &dinner;
     double arrivalTime;
     double departureTime;
 
@@ -85,15 +85,15 @@ void setMealFee(double allowedMealTotal, double spentMealTotal)
 
 }
 
-double maxExpensesHotel(int night, int fee, int allowedHotelFee, int actualHotelFee, int extra)
+double maxExpensesHotel(int days, double fee, double allowedHotelFee, double spentHotelFee, double &totalReimbursement)
 {
     printf("How many nights did you spend on the trip?");
     scanf("%d",night );
     printf("How much did the hotel cost you per night?");
     scanf("%d", fee);
-    allowedHotelFee = night * 90; 
-    actualHotelFee = night*fee;
-    extra = actualHotelCost - allowedFee;
+    allowedHotelFee = days * 90; 
+    spentHotelFee = days*fee;
+    &totalReimbursement += (spentHotelFee - allowedHotelFee);
     
 
     while (fee <0)
@@ -101,7 +101,7 @@ double maxExpensesHotel(int night, int fee, int allowedHotelFee, int actualHotel
         printf("Please enter a positive number!")
         scanf("%d", fee)
     }
-    return  actualHotelCost, extra;
+    return  allowedHotelFee, totalReimbursement;
 }
 
 double maxExpensesMeal(double arrivalTime, double departureTime)
@@ -137,17 +137,23 @@ int main()
 
     double allowedMealTotal; 
     double spentMealTotal;
+    double &breakfast;
+    double &lunch;
+    double &dinner;
     double allowedBreaksfastFee;
     double allowedLunchFee;
     double allowedDinnerFee;
+    double &totalReimbursement;
 
     days = setTotalDays(days);
     registrationFee = setRegistrationFees(registrationFee);
-    maxExpensesHotel(actualHotelFee, extra );
+    maxExpensesHotel(spentHotelFee, allowedHotelFee, &totalReimbursement);
     allowedBreaksfastFee = 9*days;
     allowedLunchFee = 12*days;
     allowedDinnerFee = 16*days;
     allowedMealTotal = allowedBreaksfastFee + allowedLunchFee + allowedDinnerFee;
+    spentMealTotal = &breakfast + &lunch + &dinner;
+    &totalReimbursement += (spentMealTotal - allowedMealTotal)
     setMealFee(allowedMealTotal, spentMealTotal);
 
 
