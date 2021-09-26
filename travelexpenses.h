@@ -6,9 +6,9 @@
  * 
  * @return  total days of trip
  */
-double setTotalDays();
+int setTotalDays(int days);
 
-/**
+/* /*
  * setArrivalTime - get user input for arrival time on first day of trip
  * 
  * @return  arrival time
@@ -34,28 +34,43 @@ double setRoundAirfare();
  * 
  * @return  total car rental fees
  */
-double setCarRentalFee();
+double setCarRentalFees();
 
 /**
  * setParkingFees - get user input for total parking fees
  * 
+ * @param   days                the total days of the trip
+ * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover 
  * @return  total parking fees
  */
 double setParkingFees();
 
 /**
- * setTaxiFees - get user input for total taxi fees
+ * setTaxiFees - get user input for taxi fees incurred during the trip
  * 
- * @return  total taxi fees
+ * @param   days                the total days of the trip
+ * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
+ * @return  total taxi fees incurred during the trip
  */
 double setTaxiFees();
 
 /**
- * setCarRentalFees - get user input for total car rental fees
+ * setMealFee - get user input for the meal fees incurred during the trip
  * 
- * @return  total car rental fees
+ * @param   days                the total days of the trip
+ * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
+ * @return  total meal fees incurred during the trip
  */
-double setCarRentalFees();
+//double setMealFees(int days, double &totalReimbursement, double arrivalTime, double departureTime);
+
+/**
+ * setHotelFees - get user input for the hotel fees incurred during the trip
+ * 
+ * @param   days                the total days of the trip
+ * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
+ * @return  total hotel fees incurred during the trip
+ */
+double setHotelFees(int days, double totalReimbursement);
 
 /**
  * setRegistrationFees - get user input for total of conference or seminar fees
@@ -63,13 +78,6 @@ double setCarRentalFees();
  * @return  total of all conference or seminar fees
  */
 double setRegistrationFees();
-
-/**
- * setMealFee - get user input for the meal cost of each meal during the trip
- * 
- * @return  pointer to array of meal costs for each meal during the trip 
- */
-double *setMealFee();
 
 /**
  * drivingExpense - Calculate the cost of miles driven with a private vehicle
