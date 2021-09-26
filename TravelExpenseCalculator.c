@@ -157,6 +157,18 @@ int main()
     &totalReimbursement += (spentMealTotal - allowedMealTotal)
     setMealFee(allowedMealTotal, spentMealTotal);
 
+    char fullname[50];
+    
+
+    printf("---Travel Expenses Report--- ")
+    printf("Name: ");
+    scanf("%c", fullname);
+    printf("Total days of the trip: %d\n", days);
+    printf("Total expenses: $" "%lf" , ); // add parameter total here
+    printf("Total allowable expenses: $" "%lf", ); // add parameter total allowance here
+    printf("Total reimbursement: $" "%lf", totalReimbursement);
+    printf("Total amount saved in this trip: $" "%lf", ); //add parameter total saved here
+
 
 
 
