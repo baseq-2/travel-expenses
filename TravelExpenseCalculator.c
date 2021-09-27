@@ -13,9 +13,10 @@ int main()
     double parkingFee;
     double taxiFee;
     double registrationFee;
-    double spentTotal;      //Overall total cost
-    double allowedTotal;    //overall allowed cost
-    double totalSaved;      //Overall saved amount
+    double spentTotal;              //total expense
+    double allowedTotal;            //allowed total
+    double totalSaved;              //saved amount
+    double &totalReimbursement;     //Total Reimbursement if any
     double mealTotal;
     double total;
     double allowedParking;
