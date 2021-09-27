@@ -49,13 +49,17 @@ int main()
 
     carRentalFee = setCarRentalFees(carRentalFee);
     printf("\nCar Rental fees: $%.2lf\n", carRentalFee);
+    
     parkingFee = setParkingFees(parkingFee);
     printf("\nParking fee: $%.2lf", parkingFee);
+    
     int parkingDays = days;
     allowedParking = maxExpensesParking(parkingDays);
     printf("\nThe max parking provided by the company is: $%.2lf", allowedParking);
+    
     taxiFee = setTaxiFees(taxiFee);
     printf("Taxi Fee: $%.2lf", taxiFee);
+    
     int taxiDays = days;
     allowedTaxiFee = maxExpensesTaxi(taxiDays);
     printf("\nThe max taxi fee's provided by the company is: $%.2lf", allowedTaxiFee);
@@ -69,10 +73,8 @@ int main()
     spentHotelFee = setHotelFee(spentHotelFee);
     printf("\nTotal hotel fee: $%.2lf", spentHotelFee);
 
-    if ( spentTotal <= allowedTotal )
-    {
-        totalSaved = allowedTotal - spentTotal;
-    }
+    spentMealTotal = setMealFee(spentMealTotal);
+    printf("\nTotal meal fee: $%.2lf", spentMealTotal);
 
     allowedBreaksfastFee = 9*days;
     allowedLunchFee = 12*days;
@@ -94,7 +96,12 @@ int main()
     }
 
     allowedTotal = airfareFee + carRentalFee + maxParking + maxTaxi + drivingCost + registrationFee + allowedHotelFee + allowedMealTotal;
-    spentTotal   = airfareFee + carRentalFee + parkingFee + taxiFee + drivingCost + registrationFee + spentHotelFee + spentMealTotal;
+    spentTotal   = airfareFee + carRentalFee + parkingFee + taxiFee + drivingCost + registrationFee + spentHotelFee   + spentMealTotal;
+
+    if ( spentTotal <= allowedTotal )
+    {
+        totalSaved = allowedTotal - spentTotal;
+    }
 
     
     char fullname[50];
