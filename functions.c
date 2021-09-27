@@ -64,7 +64,7 @@ double setCarRentalFees(double carRentalFee)
         scanf("%lf", &carRentalFee);
     }
     return carRentalFee;
-};
+}
 
 //by: Huijun
 double setParkingFees(double parkingFee)
@@ -77,13 +77,13 @@ double setParkingFees(double parkingFee)
         scanf("%lf", &parkingFee);
     }
     return parkingFee;
-};
+}
 
 //by: Huijun
 double maxExpensesParking(int parkingDays){
     double maxParking = parkingDays * 6.00;
     return maxParking;
-};
+}
 
 //by: Huijun
 double setTaxiFees(double taxiFee){
@@ -94,13 +94,13 @@ double setTaxiFees(double taxiFee){
         scanf("%lf", &taxiFee);
     }
     return taxiFee;
-};
+}
 
 //by: Huijun
 double maxExpensesTaxi(int taxiDays){
     double maxTaxi = taxiDays * 10.0;
     return maxTaxi;
-};
+}
 
 //by:Huijun
 double drivingExpense(double vechileExpense)
@@ -110,8 +110,9 @@ double drivingExpense(double vechileExpense)
     scanf("%lf", &miles);
     double drivingCost = miles * 0.27;
     return drivingCost;
-};
+}
 
+//By: Ben Le
 double setRegistrationFees(double registrationFee)
 {   
     printf("What are the conference or seminar registration fees?");
@@ -125,6 +126,36 @@ double setRegistrationFees(double registrationFee)
     return registrationFee;
 
 }
+
+//By: Ben Le
+double setHotelFee(double hotelFee, double &spentHotelFee,int &totalReimbursement)
+{
+    int days;
+    printf("How many nights did you spend on the trip?");
+    scanf("%d",days );
+    printf("How much did the hotel cost you per night?");
+    scanf("%d", hotelFee);
+
+    while (fee <0)
+    {
+        printf("Please enter a positive number!")
+        scanf("%d", hotelFee)
+    }
+    
+    &spentHotelFee = days*hotelFee;
+
+    return &spentHotelFee;
+
+}
+
+//By: Ben Le
+double maxExpensesHotel(double &allowedHotelFee, double &spentHotelFee, double &totalReimbursement)
+{
+    int days;
+    &allowedHotelFee = days * 90; 
+    &totalReimbursement += (spentHotelFee - allowedHotelFee);
+
+    return  allowedHotelFee, totalReimbursement;
 
 //By: Ben Le
 void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalReimbursement)
@@ -198,24 +229,7 @@ void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalRei
 
 }
 
-double maxExpensesHotel(int days, double &allowedHotelFee, double &spentHotelFee, double &totalReimbursement)
-{
-    double fee;
-    printf("How many nights did you spend on the trip?");
-    scanf("%d",night );
-    printf("How much did the hotel cost you per night?");
-    scanf("%d", fee);
-    allowedHotelFee = days * 90; 
-    spentHotelFee = days*fee;
-    &totalReimbursement += (spentHotelFee - allowedHotelFee);
-    
-
-    while (fee <0)
-    {
-        printf("Please enter a positive number!")
-        scanf("%d", fee)
-    }
-    return  allowedHotelFee, totalReimbursement;
+//By: Ben Le
 }
 
 double maxExpensesMeal(double arrivalTime, double departureTime)
