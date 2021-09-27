@@ -1,3 +1,4 @@
+   
 #ifndef TRAVELEXPENSES_H
 #define TRAVELEXPENSES_H
 
@@ -43,7 +44,8 @@ double setCarRentalFees();
  * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover 
  * @return  total parking fees
  */
-double setParkingFees(int days, double &totalReimbursement);
+
+double setParkingFees(int days, double *totalReimbursement);
 
 /**
  * setTaxiFees - get user input for taxi fees incurred during the trip
@@ -52,7 +54,8 @@ double setParkingFees(int days, double &totalReimbursement);
  * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
  * @return  total taxi fees incurred during the trip
  */
-double setTaxiFees(int days, double &totalReimbursement);
+
+double setTaxiFees(int days, double *totalReimbursement);
 
 /**
  * setMealFee - get user input for the meal fees incurred during the trip
@@ -61,7 +64,8 @@ double setTaxiFees(int days, double &totalReimbursement);
  * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
  * @return  total meal fees incurred during the trip
  */
-double setMealFees(int days, double &totalReimbursement, double arrivalTime, double departureTime);
+
+double setMealFees(int days, double *totalReimbursement, double arrivalTime, double departureTime);
 
 /**
  * setHotelFees - get user input for the hotel fees incurred during the trip
@@ -70,7 +74,8 @@ double setMealFees(int days, double &totalReimbursement, double arrivalTime, dou
  * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
  * @return  total hotel fees incurred during the trip
  */
-double setHotelFees(int days, double &totalReimbursement);
+
+double setHotelFees(int days, double *totalReimbursement);
 
 /**
  * setRegistrationFees - get user input for total of conference or seminar fees
