@@ -131,9 +131,9 @@ double setRegistrationFees(double registrationFee)
 double setHotelFee(double hotelFee, double &spentHotelFee,int &totalReimbursement)
 {
     int days;
-    printf("How many nights did you spend on the trip?");
+    printf("How many nights did you spend on the trip?\n");
     scanf("%d",days );
-    printf("How much did the hotel cost you per night?");
+    printf("How much did the hotel cost you per night?\n");
     scanf("%d", hotelFee);
 
     while (fee <0)
@@ -172,56 +172,56 @@ void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalRei
     {
         while (day < 2 && departureTime > 00.00 && departureTime<= 7.00))
         {
-            printf("Enter the cost of breakfast.")
-            scanf("%d", breakfast); 
-            printf("Enter the cost of lunch.")
-            scanf("%d", lunch); 
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of breakfast:\n")
+            scanf("%d", &breakfast); 
+            printf("Enter the cost of lunch:\n")
+            scanf("%d", &lunch); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
         }
         while (day < 2 && departureTime > 7.01 && departureTime <=12.00)
         {
-            printf("Enter the cost of lunch.")
-            scanf("%d", lunch); 
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of lunch:\n")
+            scanf("%d", &lunch); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
         }
         while (day < 2 && departureTime > 12.01 && departureTime <=18.00)
         {
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
         }
         while (day > 1 && day < days )
         {
-            printf("Enter the cost of breakfast.")
-            scanf("%d", breakfast); 
-            printf("Enter the cost of lunch.")
-            scanf("%d", lunch); 
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of breakfast:\n")
+            scanf("%d", &breakfast); 
+            printf("Enter the cost of lunch:\n")
+            scanf("%d", &lunch); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
 
         }
         while (day == days && arrivalTime > 8.00 && arrivalTime <= 13.00)
         {
-            printf("Enter the cost of breakfast.")
-            scanf("%d", breakfast); 
-            printf("Enter the cost of lunch.")
-            scanf("%d", lunch); 
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner);
+            printf("Enter the cost of breakfast:\n")
+            scanf("%d", &breakfast); 
+            printf("Enter the cost of lunch:\n")
+            scanf("%d", &lunch); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner);
 
         }
         while (day == days && arrivalTime > 13.01 && arrivalTime <= 19.00)
         {
-            printf("Enter the cost of lunch.")
-            scanf("%d", lunch); 
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of lunch:\n")
+            scanf("%d", &lunch); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
         }
         while (day == days && arrivalTime > 19.01)
         {
-            printf("Enter the cost of dinner.")
-            scanf("%d", dinner); 
+            printf("Enter the cost of dinner:\n")
+            scanf("%d", &dinner); 
 
         }
         return;
@@ -234,20 +234,21 @@ void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalRei
 
 double maxExpensesMeal(double arrivalTime, double departureTime)
 {
-    printf("At what time did you depart for the trip?") ;
+    printf("At what time did you depart for the trip on the last day?(using 24 hour time 00.00)\n") ;
     scanf("%d", departureTime);       
     while ( departureTime <0 || departureTime > 23.59)
     {
         printf("Error: Please enter a number between 00.00 and 23.59");
         scanf("%d", departureTime);
     }
-    printf("At what time did you arrive for the trip?");
+    printf("At what time did you arrive for the trip on the first day?(using 24 hour time 00.00)\n");
     scanf("%d", arrivalTime);
     while ( arrivalTime <0 || arrivalTime > 23.59)
     {
         printf("Error: Please enter a number between 00.00 and 23.59");
         scanf("%d", arrivalTime);
     }
+    
     return;
 
 }
