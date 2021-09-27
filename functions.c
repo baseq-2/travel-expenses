@@ -67,16 +67,29 @@ double setCarRentalFees(double carRentalFee)
 }
 
 //by: Huijun
-double setParkingFees(double parkingFee)
+double setParkingFees(int days, double *totalReimbursement )
 {
-    printf("\nEnter the amount of total parking fee (0 if there is none): ");
-    scanf("%lf", &parkingFee);
-    while(parkingFee < 0.0)
-    {
-        printf("Negative is not accepted for parking fee.\nPlease enter again: ");
-        scanf("%lf", &parkingFee);
+    double park = 0.0;
+    double tempP;
+    double exceed = 0.0;
+
+
+    for (int i = 1; i <= days; i++){
+        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        scanf("%lf", &tempP);
+        while(tempP < 0.0){
+            printf("Negative is not accepted for parking fee.\nPlease enter again: ");
+            scanf("%lf", &tempP);
+        }
+        park += tempP;
+        if (tempP > 6.00){
+            exceed += (tempP - 6.00);
+            *totalReimbursement = *totalReimbursement + exceed;
+        }
+        
     }
-    return parkingFee;
+    
+    return park;
 }
 
 //by: Huijun
@@ -86,14 +99,28 @@ double maxExpensesParking(int parkingDays){
 }
 
 //by: Huijun
-double setTaxiFees(double taxiFee){
-    printf("\nEnter the amount of total taxi fee  (0 if there is none): ");
-    scanf("%lf", &taxiFee);
-    while(taxiFee < 0.0){
-        printf("\nNegative is not accepted for taxi fee.\nPlease enter again: ");
-        scanf("%lf", &taxiFee);
+double setTaxiFees(int days, double *totalReimbursement ){
+    double taxi = 0.0;
+    double tempT;
+    double exceed = 0.0;
+
+
+    for (int i = 1; i <= days; i++){
+        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        scanf("%lf", &tempT);
+        while(tempT < 0.0){
+            printf("Negative is not accepted for taxi fee.\nPlease enter again: ");
+            scanf("%lf", &tempT);
+        }
+        taxi += tempT;
+        if (tempT > 10.00){
+            exceed += (tempT - 10.00);
+            *totalReimbursement = *totalReimbursement + exceed;
+        }
+        
     }
-    return taxiFee;
+    
+    return taxi;
 }
 
 //by: Huijun
