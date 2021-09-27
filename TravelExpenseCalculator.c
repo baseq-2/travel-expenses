@@ -45,7 +45,7 @@ double setTaxiFees(int days, double *totalReimbursement){
     for (int i = 1; i <= days; i++){
         printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
         scanf("%lf", &tempT);
-        while(tempP < 0.0){
+        while(tempT < 0.0){
             printf("Negative is not accepted for taxi fee.\nPlease enter again: ");
             scanf("%lf", &tempT);
         }
