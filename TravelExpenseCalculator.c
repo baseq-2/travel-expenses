@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "travelexpenses.h"
 
+
 int main()
 {
     int days = 0;
@@ -83,6 +84,7 @@ int main()
     allowedLunchFee = 12*days;
     allowedDinnerFee = 16*days;
     allowedMealTotal = allowedBreaksfastFee + allowedLunchFee + allowedDinnerFee;
+
     spentMealTotal = breakfast + lunch + dinner;
     
     if (breakfast >= allowedBreaksfastFee)
@@ -100,6 +102,12 @@ int main()
 
     allowedTotal = airfareFee + carRentalFee + maxParking + maxTaxi + drivingCost + registrationFee + allowedHotelFee + allowedMealTotal;
     spentTotal   = airfareFee + carRentalFee + parkingFee + taxiFee + drivingCost + registrationFee + spentHotelFee   + spentMealTotal;
+
+    spentMealTotal = &breakfast + &lunch + &dinner;
+
+    &totalReimbursement += (spentMealTotal - allowedMealTotal)
+    setMealFee(allowedMealTotal, spentMealTotal);
+
 
     if ( spentTotal <= allowedTotal )
     {
