@@ -12,25 +12,51 @@ double setCarRentalFee(){
     return carR;
 };
 
-double setParkingFees(){
-    double park;
-    printf("Enter the amount of total parking fee (0 if there is none): ");
-    scanf("%lf", &park);
-    while(park < 0.0){
-        printf("Negative is not accepted for parking fee.\nPlease enter again: ");
-        scanf("%lf", &park);
+double setParkingFees(int days, double *totalReimbursement ){
+    double park = 0.0;
+    double tempP;
+    double exceed = 0.0;
+
+
+    for (int i = 1; i <= days; i++){
+        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        scanf("%lf", &tempP);
+        while(tempP < 0.0){
+            printf("Negative is not accepted for parking fee.\nPlease enter again: ");
+            scanf("%lf", &tempP);
+        }
+        park += tempP;
+        if (tempP > 6.00){
+            exceed += (tempP - 6.00);
+            *totalReimbursement = *totalReimbursement + exceed;
+        }
+        
     }
+    
     return park;
 };
 
-double setTaxiFees(){
-    double taxi;
-    printf("Enter the amount of total taxi fee  (0 if there is none): ");
-    scanf("%lf", &taxi);
-    while(taxi < 0.0){
-        printf("Negative is not accepted for taxi fee.\nPlease enter again: ");
-        scanf("%lf", &taxi);
+double setTaxiFees(int days, double *totalReimbursement){
+    double taxi = 0.0;
+    double tempT;
+    double exceed = 0.0;
+
+
+    for (int i = 1; i <= days; i++){
+        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        scanf("%lf", &tempT);
+        while(tempP < 0.0){
+            printf("Negative is not accepted for taxi fee.\nPlease enter again: ");
+            scanf("%lf", &tempT);
+        }
+        taxi += tempT;
+        if (tempT > 10.00){
+            exceed += (tempT - 10.00);
+            *totalReimbursement = *totalReimbursement + exceed;
+        }
+        
     }
+    
     return taxi;
 };
 
