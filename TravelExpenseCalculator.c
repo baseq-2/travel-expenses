@@ -26,9 +26,9 @@ int main()
     double allowedBreaksfastFee;
     double allowedLunchFee;
     double allowedDinnerFee;
-    double breaksfastFee;
-    double lunchFee;
-    double dinnerFee;
+    double &breaksfast;
+    double &lunch;
+    double &dinner;
     double allowedMealTotal;
     double parkingSpent;
     double taxiSpent;
@@ -62,13 +62,32 @@ int main()
     printf("\nTotal expense for driving private vechile: $%.2lf", vechileExpense);
 
     registrationFee = setRegistrationFees(registrationFee);
-    printf("")
-    //maxExpensesHotel(actualHotelFee, extra );
-    //allowedBreaksfastFee = 9*days;
-    //allowedLunchFee = 12*days;
-    //allowedDinnerFee = 16*days;
-    //allowedMealTotal = allowedBreaksfastFee + allowedLunchFee + allowedDinnerFee;
-    //setMealFee(allowedMealTotal, spentMealTotal);
+    printf("\nTotal seminar and registration fee: $%.2lf", registrationFee);
+
+    maxExpensesHotel
+
+    allowedBreaksfastFee = 9*days;
+    allowedLunchFee = 12*days;
+    allowedDinnerFee = 16*days;
+    allowedMealTotal = allowedBreaksfastFee + allowedLunchFee + allowedDinnerFee;
+    spentMealTotal = &breakfast + &lunch + &dinner;
+    &totalReimbursement += (spentMealTotal - allowedMealTotal)
+    setMealFee(allowedMealTotal, spentMealTotal);
+
+    allowedTotal = airfareFee + carRentalFee + maxParking + maxTaxi +             + registrationFee;
+    spentTotal =   airfareFee + carRentalFee + parkingFee + taxiFee + drivingCost + registrationFee;
+
+    
+    char fullname[50];
+    
+    printf("---Travel Expenses Report--- ")
+    printf("Name: ");
+    scanf("%c", fullname);
+    printf("Total days of the trip: %d\n", days);
+    printf("Total expenses: $" "%lf" ,spentTotal ); 
+    printf("Total allowable expenses: $" "%lf", allowedTotal); 
+    printf("Total reimbursement: $" "%lf", totalReimbursement);
+    printf("Total amount saved in this trip: $" "%lf", ); //add parameter total saved here
 
 
     
