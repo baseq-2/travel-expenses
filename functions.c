@@ -2,37 +2,40 @@
 #include "travelexpenses.h"
 
 //by: Noe Rivera
-int setTotalDays(int days)
+int setTotalDays()
 {
+    int days;
     printf("How many days were spent on the trip including departure and arrival?\n");
     scanf("%d", &days);
     while ( days < 1 )
     {
-        printf("Please enter a number greater than 1\n");
+        printf("Please enter a number greater than or equal to 1\n");
         scanf("%d", &days);
     }
     return days;
 }
 
 //by: Noe Rivera
-double setDepartureTime(double departureTime)
+double setDepartureTime()
 {
+    double departureTime;
     printf("\nWhat is the departure time for the trip?(using 24 hour time 00.00)\n");
     scanf("%lf", &departureTime);
-    while (departureTime < 0 || departureTime > 23.59)
+    while ( (departureTime < 0 || departureTime > 23.59) || (departureTime-(int) departureTime > (double)0.59) )
     {
-        printf ("\nERROR: please enter valid number between 00.00 - 23.59\n");
+        printf ("\nERROR: please enter valid time between 00.00 - 23.59\n");
         scanf("%lf",&departureTime);
     }
     return departureTime;
 }
 
 //by: Noe Rivera
-double setArrivalTime(double arrivalTime)
+double setArrivalTime()
 {
+    double arrivalTime;
     printf("\nWhat is the arrival time for the trip?(using 24 hour time 00.00)\n");
     scanf("%lf", &arrivalTime);
-    while (arrivalTime < 0 || arrivalTime > 23.59)
+    while ( (arrivalTime < 0 || arrivalTime > 23.59) || (arrivalTime-(int) arrivalTime > (double)0.59) )
     {
         printf("\nERROR: enter a valid number between 00.00-23.59\n");
         scanf("%lf", &arrivalTime);
@@ -47,7 +50,7 @@ double setRoundAirfare(double airfareFee)
     scanf("%lf", &airfareFee);
     while (airfareFee < 0)
     {
-        printf("ERROR: Please enter a number greater than 0.");
+        printf("ERROR: Please enter a non-negative number.\n");
         scanf("%lf", &airfareFee);
     }
     return airfareFee;
@@ -75,7 +78,7 @@ double setParkingFees(int days, double *totalReimbursement )
 
 
     for (int i = 1; i <= days; i++){
-        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        printf("Enter the amount of parking fee for day %d (0 if there is none): ", i);
         scanf("%lf", &tempP);
         while(tempP < 0.0){
             printf("Negative is not accepted for parking fee.\nPlease enter again: ");
@@ -106,7 +109,7 @@ double setTaxiFees(int days, double *totalReimbursement ){
 
 
     for (int i = 1; i <= days; i++){
-        printf("Enter the amount of parking fee for day%d (0 if there is none): ", i);
+        printf("Enter the amount of taxi fee for day %d (0 if there is none): ", i);
         scanf("%lf", &tempT);
         while(tempT < 0.0){
             printf("Negative is not accepted for taxi fee.\nPlease enter again: ");
@@ -140,14 +143,15 @@ double drivingExpense(double vechileExpense)
 }
 
 //By: Ben Le
-double setRegistrationFees(double registrationFee)
+double setRegistrationFees()
 {   
-    printf("What are the conference or seminar registration fees?");
-    scanf("%d", registrationFee);
+    double registrationFee;
+    printf("What are the conference or seminar registration fees? ");
+    scanf("%lf", &registrationFee);
 
     while (registrationFee <0)
     {
-        printf("Please enter a positive number!")
+        printf("Please enter a positive number!");
         scanf("%d", registrationFee);
     }
     return registrationFee;
@@ -155,127 +159,171 @@ double setRegistrationFees(double registrationFee)
 }
 
 //By: Ben Le
-double setHotelFee(double hotelFee, double &spentHotelFee,int &totalReimbursement)
+double setHotelFees(int totalDays, double *totalReimbursement)
 {
-    int days;
-    printf("How many nights did you spend on the trip?\n");
-    scanf("%d",days );
-    printf("How much did the hotel cost you per night?\n");
-    scanf("%d", hotelFee);
-
-    while (fee <0)
+    double dayFee;
+    double totalCost = 0.0;
+    for (int day=1; day<=totalDays; day++)
     {
-        printf("Please enter a positive number!")
-        scanf("%d", hotelFee)
+        printf("How much did the hotel cost you on night %d?\n", day);
+        scanf("%lf", &dayFee);
+        while (dayFee <0)
+        {
+            printf("Please enter a positive number!");
+            scanf("%lf", &dayFee);
+        }
+        totalCost += dayFee;
+        if(dayFee > 90)
+        {
+            *totalReimbursement += dayFee - 90;
+        }
+    }   
+    return totalCost;
+
+}
+
+//By: Ben Le
+double maxExpensesHotel(int totalDays)
+{
+    return totalDays * 90;
+}
+
+double mealFee(char mealType, int day, double *totalReimbursement)
+{
+    double cost;
+    switch (mealType)
+    {
+        case 'b':
+            printf("How much did breakfast cost on day %d? ", day);
+            scanf("%lf", &cost);
+            while(cost < 0.0)
+            {
+                printf("Please enter a non-negative cost: ");
+                scanf("%lf", &cost);
+            }
+            if(cost > 9.0)
+            {
+                *totalReimbursement += cost-9.0;
+            }
+            return cost;
+        case 'l':
+            printf("How much did lunch cost on day %d? ", day);
+            scanf("%lf", &cost);
+            while(cost < 0.0)
+            {
+                printf("Please enter a non-negative cost: ");
+                scanf("%lf", &cost);
+            }
+            if(cost > 12.0)
+            {
+                *totalReimbursement += cost-12.0;
+            }
+            return cost;
+        case 'd':
+            printf("How much did dinner cost on day %d? ", day);
+            scanf("%lf", &cost);
+            while(cost < 0.0)
+            {
+                printf("Please enter a non-negative cost: ");
+                scanf("%lf", &cost);
+            }
+            if(cost > 16.0)
+            {
+                *totalReimbursement += cost-16.0;
+            }
+            return cost;
+        default:
+            return 0.0;
     }
+}
+
+//By: Ben Le
+double setMealFees(int totalDays, double *totalReimbursement, double arrivalTime, double departureTime)
+{
+    double breakfast;
+    double lunch;
+    double dinner;
+    double totalCost = 0.0;
     
-    &spentHotelFee = days*hotelFee;
-
-    return &spentHotelFee;
-
+    for (int day = 1; day <= totalDays; day++ )
+    {
+        if(day == 1 || day == totalDays)
+        {
+            if(day == 1)
+            {
+                if(arrivalTime < 18.0)
+                {
+                    totalCost+=mealFee('d', day, totalReimbursement);
+                    if(arrivalTime < 12.0)
+                    {
+                        totalCost+=mealFee('l', day, totalReimbursement);
+                        if(arrivalTime < 7.0)
+                        {
+                            totalCost+=mealFee('b', day, totalReimbursement);
+                        } 
+                    }
+                }
+            }
+            else
+            {
+                if(arrivalTime > 8.0)
+                {
+                    totalCost+=mealFee('b', day, totalReimbursement);
+                    if(arrivalTime > 13.0)
+                    {
+                        totalCost+=mealFee('l', day, totalReimbursement);
+                        if(arrivalTime > 19.0)
+                        {
+                            totalCost+=mealFee('d', day, totalReimbursement);
+                        } 
+                    }
+                } 
+            }
+        }
+        else
+        {
+            totalCost+=mealFee('b', day, totalReimbursement);
+            totalCost+=mealFee('l', day, totalReimbursement);
+            totalCost+=mealFee('d', day, totalReimbursement);
+        }
+    }
+    return totalCost;
 }
 
-//By: Ben Le
-double maxExpensesHotel(double &allowedHotelFee, double &spentHotelFee, double &totalReimbursement)
-{
-    int days;
-    &allowedHotelFee = days * 90; 
-    &totalReimbursement += (spentHotelFee - allowedHotelFee);
 
-    return  allowedHotelFee, totalReimbursement;
 
 //By: Ben Le
-void setMealFee(double allowedMealTotal, double spentMealTotal, double &totalReimbursement)
+
+double maxExpensesMeal(int totalDays, double arrivalTime, double departureTime)
 {
-    int day;
-    int days;
-    double &breakfast;
-    double &lunch;
-    double &dinner;
-    double arrivalTime;
-    double departureTime;
-
-    for (day == 1; day <= days; day++ )
+    double maxAllowedMealsCost = 0.0;
+    if(departureTime > 7.0)
     {
-        while (day < 2 && departureTime > 00.00 && departureTime<= 7.00))
-        {
-            printf("Enter the cost of breakfast:\n")
-            scanf("%d", &breakfast); 
-            printf("Enter the cost of lunch:\n")
-            scanf("%d", &lunch); 
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-        }
-        while (day < 2 && departureTime > 7.01 && departureTime <=12.00)
-        {
-            printf("Enter the cost of lunch:\n")
-            scanf("%d", &lunch); 
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-        }
-        while (day < 2 && departureTime > 12.01 && departureTime <=18.00)
-        {
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-        }
-        while (day > 1 && day < days )
-        {
-            printf("Enter the cost of breakfast:\n")
-            scanf("%d", &breakfast); 
-            printf("Enter the cost of lunch:\n")
-            scanf("%d", &lunch); 
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-
-        }
-        while (day == days && arrivalTime > 8.00 && arrivalTime <= 13.00)
-        {
-            printf("Enter the cost of breakfast:\n")
-            scanf("%d", &breakfast); 
-            printf("Enter the cost of lunch:\n")
-            scanf("%d", &lunch); 
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner);
-
-        }
-        while (day == days && arrivalTime > 13.01 && arrivalTime <= 19.00)
-        {
-            printf("Enter the cost of lunch:\n")
-            scanf("%d", &lunch); 
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-        }
-        while (day == days && arrivalTime > 19.01)
-        {
-            printf("Enter the cost of dinner:\n")
-            scanf("%d", &dinner); 
-
-        }
-        return;
+        maxAllowedMealsCost += 6;
     }
-
-}
-
-//By: Ben Le
-}
-
-double maxExpensesMeal(double arrivalTime, double departureTime)
-{
-    printf("At what time did you depart for the trip on the last day?(using 24 hour time 00.00)\n") ;
-    scanf("%d", departureTime);       
-    while ( departureTime <0 || departureTime > 23.59)
+    if(departureTime > 12.0)
     {
-        printf("Error: Please enter a number between 00.00 and 23.59");
-        scanf("%d", departureTime);
+        maxAllowedMealsCost += 12;
     }
-    printf("At what time did you arrive for the trip on the first day?(using 24 hour time 00.00)\n");
-    scanf("%d", arrivalTime);
-    while ( arrivalTime <0 || arrivalTime > 23.59)
+    if(departureTime > 18.0)
     {
-        printf("Error: Please enter a number between 00.00 and 23.59");
-        scanf("%d", arrivalTime);
+        maxAllowedMealsCost += 16;
     }
-    
-    return;
-
+    if(arrivalTime > 7.0)
+    {
+        maxAllowedMealsCost += 6;
+    }
+    if(arrivalTime > 12.0)
+    {
+        maxAllowedMealsCost += 12;
+    }
+    if(arrivalTime > 18.0)
+    {
+        maxAllowedMealsCost += 16;
+    }
+    if(totalDays > 2)
+    {
+        maxAllowedMealsCost += (totalDays-2) * 34;
+    }
+    return maxAllowedMealsCost;
 }

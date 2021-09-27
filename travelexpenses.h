@@ -7,17 +7,17 @@
  * 
  * @return  total days of trip
  */
-double setTotalDays();
+int setTotalDays();
 
 /**
- * setArrivalTime - get user input for arrival time on first day of trip
+ * setArrivalTime - get user input for arrival time on last day of trip
  * 
  * @return  arrival time
  */
 double setArrivalTime();
 
 /**
- * setDepatureTime - get user input for departure time on last day of trip
+ * setDepatureTime - get user input for departure time on first day of trip
  * 
  * @return  departure time
  */
@@ -62,6 +62,8 @@ double setTaxiFees(int days, double *totalReimbursement);
  * 
  * @param   days                the total days of the trip
  * @param   totalReimbursement  pointer of the total reimbursement the employee needs to cover
+ * @param   arrivalTime         the arrival time of the plane on the last day of the trip
+ * @param   departureTime       the departure time of the plan on the first day of the trip
  * @return  total meal fees incurred during the trip
  */
 
@@ -90,7 +92,7 @@ double setRegistrationFees();
  * @param   miles    the total number of miles driven with a private vehicle 
  * @return  total cost of miles driven
  */
-double drivingExpense(double miles);
+double drivingExpense();
 
 /**
  * maxExpenesesParking - Calculate the maximum allowed expenses for parking fees
@@ -123,6 +125,6 @@ double maxExpensesHotel(int nights);
  * @param   departureTime   the departure time of the flight onthe last day of the trip 
  * @return  the maximum allowed expense meals during the trip
  */
-double maxExpensesMeal(double arrivalTime, double departureTime);
+double maxExpensesMeal(int totalDays, double arrivalTime, double departureTime);
 
 #endif
